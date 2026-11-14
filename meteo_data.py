@@ -160,7 +160,6 @@ if __name__ == "__main__":
     )
     nice_1998.to_csv("nice_1998.csv", index=False)
 
-import pandas as pd
-df = pd.read_csv("nice_1998.csv", parse_dates=["date"])
-print((df["precip_mm"] >= 10).sum(), "jours >= 10 mm")
-print(df.groupby(df["date"].dt.month)["precip_mm"].sum().round(0))
+    df = pd.read_csv("nice_1998.csv", parse_dates=["date"])
+    print((df["precip_mm"] >= 10).sum(), "jours >= 10 mm")
+    print(df.groupby(df["date"].dt.month)["precip_mm"].sum().round(0))

@@ -19,6 +19,8 @@ PREMIERE_ANNEE_ERA5 = 1940
 
 def verifier(params: dict) -> tuple[float, float, float]:
     CA, Cf, pl_bar = float(params["CA"]), float(params["Cf"]), float(params["pl_bar"])
+    if not np.isfinite([CA, Cf, pl_bar]).all():   # [E] NaN / inf donnaient une prime « nan € »
+        raise ValueError("CA, Cf et pl_bar doivent être des nombres finis.")
     if pl_bar <= 0:
         raise ValueError("Le pivot pl_bar doit être strictement positif.")
     if CA <= Cf:

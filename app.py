@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 from meteo_data import get_rainfall, pluie_actuelle
+from devis import make_quote_pdf   # tâche E : devis PDF
 from actuariat import (
     verifier, seuil, resultat_journalier, indemnite,
     prime_empirique, price, backtest, backtest_periode,
@@ -202,6 +203,19 @@ Méthode : prime pure empirique sur {pr['n_annees']} ans
 Devis non contractuel – valable 30 jours.
 """
         st.code(devis_txt, language=None)
+
+        # Devis PDF imprimable (tâche E)
+        try:
+            pdf_bytes = make_quote_pdf(params, prime, n_annees=pr["n_annees"])
+            st.download_button(
+                "⬇️ Télécharger le devis (PDF)",
+                data=pdf_bytes,
+                file_name=f"devis_assurance_{ville.lower().replace(' ', '_')}_{date.today()}.pdf",
+                mime="application/pdf",
+                type="primary",
+            )
+        except Exception as e:
+            st.error(f"Impossible de générer le PDF : {e}")
 
         buf = io.BytesIO(devis_txt.encode())
         st.download_button(

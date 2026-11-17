@@ -206,17 +206,6 @@ requests>=2.28.0
 
 ---
 
-## 📝 Exemple numérique (sujet)
-
-> En 1998, un client niçois avec p̄l = 10 mm, CA = 1 000 €/j, Cf = 300 €/j :
-> - **R non assuré** (a posteriori) : 90 000 €
-> - **Prime P** (calculée a priori au 01/01/1998) : 3 000 €
-> - **R assuré** (a posteriori, avant prime) : 95 000 €
-> - **R net** (assuré − prime) : **92 000 €**
->
-> → S'assurer aurait été **favorable** : la prime (3 000 €) était inférieure aux pertes évitées (5 000 €).
-
----
 
 ## Auteur
 
